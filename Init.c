@@ -16,4 +16,16 @@ void UART_Init(void){
                                         // configure PA1-0 as UART
   GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFFFFF0)+0x00000001;
   GPIO_PORTA_AMSEL_R &= ~0x03;          // disable analog functionality on PA
+  
+  UART1_CTL_R &= ~UART_CTL_UARTEN;      // disable UART1
+  UART1_IBRD_R = 325;                   // IBRD = int(50,000,000 / (16 * 9600)) = int(325.521)
+  UART1_FBRD_R = 33;                    // FBRD = int(0.521) = 33
+                                        // 8 bit word length (no parity bits, one stop bit, FIFOs)
+  UART1_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
+  UART1_CTL_R |= UART_CTL_UARTEN;       // enable UART
+  GPIO_PORTC_AFSEL_R |= 0x03;           // enable alt funct on PC4-5
+  GPIO_PORTC_DEN_R |= 0x03;             // enable digital I/O on PC4-5
+                                        // configure PA1-0 as UART
+  GPIO_PORTC_PCTL_R = (GPIO_PORTC_PCTL_R&0xFFFFFFF0)+0x00000011;
+  GPIO_PORTC_AMSEL_R &= ~0x03;          // disable analog functionality on PA
 }
