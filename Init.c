@@ -1,10 +1,10 @@
 // Initfile file -- to be edit
 
-// Initialize the UART
+// Initialize Everything
 void UART_Init(void){
-  SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
-  SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A
-  while((SYSCTL_PRGPIO_R&0x01) == 0){};
+  SYSCTL_RCGCUART_R |= 0x03;            // activate UART0 and 1
+  SYSCTL_RCGCGPIO_R |= 0x05             // activate port A and C
+  while((SYSCTL_PRGPIO_R&0x05 == 0){};  // Wait for GPIOs be be ready
   UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
   UART0_IBRD_R = 325;                   // IBRD = int(50,000,000 / (16 * 9600)) = int(325.521)
   UART0_FBRD_R = 33;                    // FBRD = int(0.521) = 33
