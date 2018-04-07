@@ -27,8 +27,8 @@ void UARTandGPIO_Init(void){
   
   // ------------------------------------------------------------------Setup UART1
   UART1_CTL_R &= ~UART_CTL_UARTEN;      // disable UART1
-  UART1_IBRD_R = 325;                   // IBRD = int(50,000,000 / (16 * 9600)) = int(325.521)
-  UART1_FBRD_R = 33;                    // FBRD = int(0.521) = 33
+  UART1_IBRD_R = 43;                   // IBRD = int(50,000,000 / (16 * 36000)) = int(43.403)
+  UART1_FBRD_R = 26;                    // FBRD = int(0.403) = 26
                                         // 8 bit word length (no parity bits, one stop bit, FIFOs)
   UART1_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
   UART1_CTL_R |= UART_CTL_UARTEN;       // enable UART
