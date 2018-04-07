@@ -1,0 +1,10 @@
+int PortF_Input(void);
+void PortF_Output(int input);
+UART_InChar(void);
+UART_OutChar(char data);
+UART_OutString(char *pt);
+uint32_t UART_InUDec(void);
+void UART_OutUDec(uint32_t n);
+uint32_t UART_InUHex(void);
+void UART_OutUHex(uint32_t number);
+void UART_InString(char *bufPt, uint16_t max);
