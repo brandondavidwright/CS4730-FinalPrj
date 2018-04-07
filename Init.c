@@ -41,12 +41,12 @@ void UARTandGPIO_Init(void){
   
   // ------------------------------------------------------------------Setup PortF
   GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;    // Allow input
-	GPIO_PORTF_CR_R = 0x1F;               // Commit input
+  GPIO_PORTF_CR_R = 0x1F;               // Commit input
   GPIO_PORTF_AFSEL_R = 0;
   GPIO_PORTF_AMSEL_R = 0;
   GPIO_PORTF_PCTL_R = 0;
   GPIO_PORTF_DIR_R = 0x0E;              // set bits for LEDs Output
   GPIO_PORTF_PUR_R = 0x11;              // Pull up bits 0, 4 for input (Switches)
-	GPIO_PORTF_DEN_R = 0x1F;              // Enable all for I/O
+  GPIO_PORTF_DEN_R = 0x1F;              // Enable all for I/O
   
 }
